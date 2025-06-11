@@ -1,11 +1,13 @@
 import {useState} from "react";
 
-export default function Player({name, symbol, isActive}){
+export default function Player({name, symbol, isActive, setPlayers}){
     const [editState, setEditState] = useState(false);
     const [playerState, setPlayerState] = useState(name);
 
     function handleClick(){
         setEditState(editState => !editState);
+        if(editState)
+            setPlayers(symbol, playerState);
     }
 
     function handleChange(event){
